@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>multiple-select</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./multiple-select/multiple-select.css" />
+    <style type="text/css">
+        .form-group input[type="text"]:focus{
+            border-color: #f59942;
+        }
+        .form-group input[type="text"]{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<a href="http://wenzhixin.net.cn/p/multiple-select/docs/#documentation" target="_blank">文档链接</a>
+<div class="container col-xs-12">
+    <div class="form-group col-xs-5">
+        <label>Month</label>
+        <select id="multiple" multiple="multiple">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+    </div>
+</div>
+
+<script src="./jquery.min.js"></script>
+<script src="./multiple-select/multiple-select.js"></script>
+<script>
+    $(function() {
+        $('#multiple').change(function() {
+            console.log($(this).val());
+        }).multipleSelect({
+            width: '100%',
+            placeholder: '多选',
+            minimumCountSelected: 10,
+            selectAll: false,
+            selectAllText: '全选',
+            allSelected: '已全选',
+            filter: true
+        });
+    });
+</script>
+</body>
+</html>
