@@ -1,21 +1,204 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>下拉菜单select</title>
-	<style>
-	</style>
+    <meta charset="utf-8"/>
+    <title>bootstrap-select多选</title>
+    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-select.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-select.css">
 </head>
-<body>
-	<div class="demo">
-		<div class="title"></div>
-		<option>
-			<select></select>
-			<select></select>
-			<select></select>
-			<select></select>
-			<select></select>
-		</option>
-	</div>
+<body >
+    <a href="https://developer.snapappointments.com/bootstrap-select/options/" target="_bank" style="display: inline-block; padding: 30px;">文档</a>
 
+    <div class="col-xs-12 form-group">
+        <label>正常选择</label>
+        <select >
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>选项选择器</label>
+        <select class="selectpicker search">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+        </select>
+        <label>选项选择器(设置option中title的值)</label>
+        <select class="selectpicker search">
+            <option title="1" value="1">January</option>
+            <option title="2" value="2">February</option>
+            <option title="3" value="3">March</option>
+            <option title="4" value="4">April</option>
+        </select>
+        <label>选项选择器(show-tick)</label>
+        <select class="selectpicker search show-tick">
+            <option title="1" value="1">January</option>
+            <option title="2" value="2">February</option>
+            <option title="3" value="3">March</option>
+            <option title="4" value="4">April</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>分组  与  不可选择的分组</label>
+        <select class="selectpicker search">
+            <optgroup label="分组一">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+            </optgroup>
+            <optgroup label="分组二">
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+            </optgroup>
+            <optgroup label="不可选择分组" disabled>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>初始无选择</label>
+        <select class="selectpicker search" multiple>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+        </select>
+        <label>初始无选择（设置select中title的值）</label>
+        <select class="selectpicker search" multiple title="选择以下之一">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>通过设置data-live-search="true"来设置出现搜索</label>
+        <select class="selectpicker" data-live-search="true">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>最多选择的个数</label>
+        <select class="selectpicker serach" multiple data-max-options="2">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+        </select>
+        <label>所有分组加起来可以选择的个数</label>
+        <select class="selectpicker search" multiple data-max-options="3">
+            <optgroup label="分组一" >
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+            </optgroup>
+            <optgroup label="分组二" >
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+            </optgroup>
+        </select>
+        <label>每一个分组可以选择的个数</label>
+        <select class="selectpicker search" multiple>
+            <optgroup label="分组一" data-max-options="2">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+            </optgroup>
+            <optgroup label="分组二" data-max-options="2">
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>选择多个时，显示选择的个数</label>
+        <select class="selectpicker search" multiple data-selected-text-format="count">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+        </select>
+        <label>选择多个时，在大于设置的值时显示选择的个数</label>
+        <select class="selectpicker search" multiple data-selected-text-format="count>2">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>设置按钮类(data-style可以为以下值（btn-primary  btn-info  btn-success  btn-warning btn-danger）)</label>
+        <select class="selectpicker search" data-style="btn-info">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>设置选择框宽度(data-width 值可以为  auto   fit   100px  75% ...)</label>
+        <select class="selectpicker search" data-width="auto">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>设置显示个数(data-size)</label>
+        <select class="selectpicker search" data-size="3">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>全选与反全选(data-actions-box)</label>
+        <select class="selectpicker" multiple data-data-actions-box="true">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+        </select>
+    </div>
+
+<script type="text/javascript">
+    $(".selectpicker.search").selectpicker({
+        liveSearch:true,/*搜索框*/
+    });
+</script>
 </body>
+</html>
+
 </html>
