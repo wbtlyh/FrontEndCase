@@ -1,0 +1,135 @@
+<krpano version="1.17.4" showerrors="false" >
+
+	<!-- the skin -->
+
+
+	<!-- view settings -->
+  <view hlookat="0" vlookat="0" maxpixelzoom="0" fovmax="75" fovmin="75" fov="75" limitview="auto" />
+  <memory maxmem="1050"  devices="Mobile|Tablet|Desktop" />
+  <action name="updateImages">
+
+  </action>
+
+	<action name="addface">
+    addhotspot(%1);
+    set(hotspot[%1].url, %2);
+    set(hotspot[%1].ath, %3);
+    set(hotspot[%1].atv, %4);
+    set(hotspot[%1].width,  1002);
+    set(hotspot[%1].height, 1002);
+
+    set(hotspot[%1].distorted, true);
+    set(hotspot[%1].enabled, false);
+    set(hotspot[%1].details, 16);
+  </action>
+
+
+  <action name="addcube">
+    addface(face_%1_F, '%HTMLPATH%/%1front.%2',    0,   0);
+    addface(face_%1_L, '%HTMLPATH%/%1left.%2',  -90,   0);
+    addface(face_%1_R, '%HTMLPATH%/%1right.%2',  +90,   0);
+    addface(face_%1_B, '%HTMLPATH%/%1behind.%2', +180,   0);
+    addface(face_%1_Z, '%HTMLPATH%/%1up.%2',    0, -90);
+    addface(face_%1_N, '%HTMLPATH%/%1down.%2',    0, +90);
+    trace('%HTMLPATH%/%1down.%2')
+  </action>
+
+	<action name="removecube">
+		removehotspot(face_%1_F);
+		removehotspot(face_%1_L);
+		removehotspot(face_%1_R);
+		removehotspot(face_%1_B);
+		removehotspot(face_%1_Z);
+		removehotspot(face_%1_N);
+	</action>
+
+	<action name="addIntroPot" >
+    addhotspot(%1);
+    set(hotspot[%1].url, '%CURRENTXML%/point.png');
+    set(hotspot[%1].ath, %3);
+    set(hotspot[%1].atv, %4);
+
+	set(hotspot[%1].onclick, js(abc('%5')));
+    set(hotspot[%1].enabled, true);
+	set(hotspot[%1].edge, lefttop);
+
+
+
+
+	<!--
+    addlayer(%1);
+    set(layer[%1].parent,hotspot[%1]);
+    set(layer[%1].url, '%SWFPATH%/plugins/textfield.swf');
+    set(layer[%1].align,lefttop);
+
+
+    set(layer[%1].background,false);
+    set(layer[%1].x,35);
+    set(layer[%1].y,0);
+
+
+    set(layer[%1].css,'text-align:center; color:#000000; font-size:18px; font-weight:normal');
+
+
+    set(layer[%1].border,false);
+    set(layer[%1].width,35);
+    set(layer[%1].height,35);
+    set(layer[%1].autoheight,false);
+	-->
+    </action>
+
+
+	<action name="removeIntroPot" >
+		removehotspot(%1);
+		removelayer(%1);
+	</action>
+
+	<action name="lookAt">
+		set(view.hlookat,%1);
+		set(view.vlookat,%2);
+	</action>
+
+
+	<action name="setPotAlpha">
+		set(hotspot[%1].alpha,%2);
+	</action>
+
+  <!-- textfield with information about the currently dragged hotspot
+<plugin name="hotspotinfo" keep="true"
+        url="%SWFPATH%/plugins/textfield.swf"
+        html="drag the hotspots..."
+        css="font-family:Courier;"
+        border="false"
+        selectable="true"
+        align="left" y="-100"
+        width="200"
+        height="80"
+	        /> -->
+<!--  set(hotspot[%1].ondown,draghotspot)
+  <action name="draghotspot">
+    <![CDATA[
+		if(%1 != dragging,
+			spheretoscreen(ath, atv, hotspotcenterx, hotspotcentery);
+			sub(drag_adjustx, mouse.stagex, hotspotcenterx);
+			sub(drag_adjusty, mouse.stagey, hotspotcentery);
+			draghotspot(dragging);
+		  ,
+			if(pressed,
+				sub(dx, mouse.stagex, drag_adjustx);
+				sub(dy, mouse.stagey, drag_adjusty);
+				screentosphere(dx, dy, ath, atv);
+				copy(print_ath, ath);
+				copy(print_atv, atv);
+				roundval(print_ath, 3);
+				roundval(print_atv, 3);
+				txtadd(plugin[hotspotinfo].html, '&lt;hotspot name="',get(name),'"[br]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ath="',get(print_ath),'"[br]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atv="',get(print_atv),'"[br]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...[br]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;');
+				delayedcall(0, draghotspot(dragging) );
+			  );
+		  );
+	]]>
+  </action>-->
+
+
+
+
+</krpano>

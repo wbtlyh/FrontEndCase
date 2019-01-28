@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>krpano.com  全景图展示</title>
+	<style>
+	</style>
+</head>
+<body>
+<!-- 访问的时候需要使用域名的方式，不可以直接点击文件进行访问，直接点击文件访问报错 -->
+<script src="./panno.js"></script>
+<div id="panno" style="">
+	<noscript>
+		<table style="width:100%;height:100%;">
+			<tr style="valign:middle;">
+				<td>
+					<div style="text-align:center;">
+						ERROR:<br/><br/>
+						Javascript not activated<br/><br/>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</noscript>
+	<script>
+		embedpano({
+		    swf: "./panno.swf",
+		    xml: "./panno.xml",
+		    target: "panno",
+		    html5: "always",
+		    passQueryParameters: true,
+		    onready: function ($pano) {
+		        var reset = 0;
+		        var str = "loadxml('<krpano>" +
+		            //"<preview  url=\"" + path + "preview.jpg\" ></preview>" +
+		            "<image> " +
+		            "<left url=\"./demo/left.jpg\" />" +
+		            "<front url=\"./demo/front.jpg\" />" +
+		            "<right url=\"./demo/right.jpg\" />" +
+		            "<back  url=\"./demo/back.jpg\"  />" +
+		            "<up    url=\"./demo/up.jpg\"   />" +
+		            "<down  url=\"./demo/down.jpg\"  />" +
+		            "</image></krpano>', null, MERGE, BLEND(" + ((reset) ? 0 : 0.4) + "))";
+		            
+		        $pano.call(str);
+
+		        var str = "addIntroPot('tag0','0','-14.036243467926','4.6833917333525','28585')";
+                $pano.call(str);
+
+		        window.pano = $pano;
+		    }
+		});
+	</script>
+</div>
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$('#panno').height($(window).height());
+    $('#panno').width($(window).width());
+</script>
+</body>
+</html>
