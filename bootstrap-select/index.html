@@ -184,12 +184,26 @@
     </div>
 
     <div class="col-xs-12 form-group">
-        <label>全选与反全选(data-actions-box)</label>
-        <select class="selectpicker" multiple data-data-actions-box="true">
-            <option value="1">January</option>
+        <label>全选与反全选(data-actions-box)  与 分隔符</label>
+        <select class="selectpicker " multiple data-actions-box="true">
+            <option value="1" data-subtext="French's">January</option>
             <option value="2">February</option>
             <option value="3">March</option>
             <option value="4">April</option>
+            <option data-divider="true"></option><!-- 分隔符 -->
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+        </select>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label>带有注释</label>
+        <select class="selectpicker">
+            <option value="1" data-subtext="Fnch's">January</option>
+            <option value="2" data-subtext="Frch's">February</option>
+            <option value="3" data-subtext="Frens">March</option>
+            <option value="4" data-subtext="French">April</option>
         </select>
     </div>
 
